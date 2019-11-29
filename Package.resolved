@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "EventSource",
+        "repositoryURL": "https://github.com/MoveUpwardsDev/EventSource.git",
+        "state": {
+          "branch": null,
+          "revision": "316522ad8c5fe08775a8bcd1cdf55b976474b911",
+          "version": "3.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
