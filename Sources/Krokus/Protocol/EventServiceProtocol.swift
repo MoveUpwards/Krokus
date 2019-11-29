@@ -34,10 +34,10 @@ public protocol EventServiceProtocol {
     /// Callback called when EventSource has successfully connected to the server.
     ///
     /// - Parameter handler: callback
-    func onOpen(_ onOpenCallback: @escaping (() -> Void))
+    func onOpen(_ onOpenCallback: @escaping (() -> Void)) -> Self
 
     /// This callback is called everytime an event with name "message" or no name is received.
-    func onMessage(_ onMessageCallback: @escaping ((_ event: EventProtocol) -> Void))
+    func onMessage(_ onMessageCallback: @escaping ((_ event: EventProtocol) -> Void)) -> Self
 
     /// Callback called once EventSource has disconnected from server. This can happen for multiple reasons.
     /// The server could have requested the disconnection or maybe a network layer error, wrong URL or any other
@@ -46,7 +46,7 @@ public protocol EventServiceProtocol {
     /// @see: EventDisconnectProtocol
     ///
     /// - Parameter handler: callback
-    func onComplete(_ onComplete: @escaping ((_ message: EventDisconnectProtocol) -> Void))
+    func onComplete(_ onComplete: @escaping ((_ message: EventDisconnectProtocol) -> Void)) -> Self
 
     /// Add an event handler for an specific event name.
     ///

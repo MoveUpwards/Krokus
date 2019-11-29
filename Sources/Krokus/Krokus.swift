@@ -2,8 +2,6 @@ import Foundation
 import EventSource
 
 open class Krokus: EventServiceProtocol {
-    public static let `default` = Krokus()
-
     public let retryTime: TimeInterval = 3000
     public var state: EventServiceState = .closed
     public var listenedEventIds: [String] {
@@ -16,7 +14,7 @@ open class Krokus: EventServiceProtocol {
 
     // MARK: Life cycle
 
-    internal init() { }
+    required public init() { }
 
     @discardableResult
     public func set(config: EventConfigProtocol) -> Self {
@@ -38,13 +36,21 @@ open class Krokus: EventServiceProtocol {
         source?.disconnect()
     }
 
-    public func onOpen(_ handler: @escaping (() -> Void)) {
+    @discardableResult
+    public func onOpen(_ handler: @escaping (() -> Void)) -> Self {
         source?.onOpen(handler)
+        return self
     }
 
-    open func onMessage(_ handler: @escaping ((EventProtocol) -> Void)) { }
+    @discardableResult
+    open func onMessage(_ handler: @escaping ((EventProtocol) -> Void)) -> Self {
+        return self
+    }
 
-    open func onComplete(_ handler: @escaping ((EventDisconnectProtocol) -> Void)) { }
+    @discardableResult
+    open func onComplete(_ handler: @escaping ((EventDisconnectProtocol) -> Void)) -> Self {
+        return self
+    }
 
     @discardableResult
     open func addEventListener(_ name: String, handler: ((EventProtocol) -> Void)? = nil) -> Self {
