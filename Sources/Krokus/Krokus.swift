@@ -12,7 +12,7 @@ open class Krokus: EventServiceProtocol {
 
     // MARK: Private variables
 
-    private var source: EventSourceProtocol?
+    public private(set) var source: EventSourceProtocol?
 
     // MARK: Life cycle
 
